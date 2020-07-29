@@ -1,19 +1,15 @@
 # JsonAPI
 
-To start your Phoenix server:
+This is a learning repository, dedicated for working through the excellent [tutorial](https://lobotuerto.com/blog/building-a-json-api-in-elixir-with-phoenix/) of [Victor Adrian](https://lobotuerto.com/).
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+It contains a simple JSON endpoint written in Elixir with the help of the Phoenix framework.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Usage
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Be sure to have Elixir and Postgresql installed on your system. 
+The credentials for the development database can be set in `config/dev.exs`.
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+* Pull the code from the repository
+* Run `mix setup` inside the project folder
+* Run `mix phx.server`
+* You have your server running on port 4000!
