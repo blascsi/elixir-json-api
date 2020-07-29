@@ -6,9 +6,13 @@ defmodule JsonAPI.AccountTest do
   describe "users" do
     alias JsonAPI.Account.User
 
-    @valid_attrs %{email: "some email", is_active: true}
-    @update_attrs %{email: "some updated email", is_active: false}
-    @invalid_attrs %{email: nil, is_active: nil}
+    @valid_attrs %{email: "some email", password: "some password", is_active: true}
+    @update_attrs %{
+      email: "some updated email",
+      password: "some updated password",
+      is_active: false
+    }
+    @invalid_attrs %{email: nil, password: nil, is_active: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -19,13 +23,17 @@ defmodule JsonAPI.AccountTest do
       user
     end
 
+    def user_without_password(attrs \\ %{}) do
+      %{user_fixture(attrs) | password: nil}
+    end
+
     test "list_users/0 returns all users" do
-      user = user_fixture()
+      user = user_without_password()
       assert Account.list_users() == [user]
     end
 
     test "get_user!/1 returns the user with given id" do
-      user = user_fixture()
+      user = user_without_password()
       assert Account.get_user!(user.id) == user
     end
 
@@ -47,7 +55,7 @@ defmodule JsonAPI.AccountTest do
     end
 
     test "update_user/2 with invalid data returns error changeset" do
-      user = user_fixture()
+      user = user_without_password()
       assert {:error, %Ecto.Changeset{}} = Account.update_user(user, @invalid_attrs)
       assert user == Account.get_user!(user.id)
     end
