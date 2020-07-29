@@ -20,3 +20,6 @@ config :json_api, JsonAPIWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Relax hashing rules to run tests quicker
+config :bcrypt_elixir, :log_rounds, 4
