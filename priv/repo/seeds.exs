@@ -9,3 +9,8 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+IO.puts("Seeding users...")
+
+JsonAPI.Account.create_user(%{email: "user1@example.com", password: "asdQWE123"})
+JsonAPI.Account.create_user(%{email: "user2@example.com", password: "asdQWE123"})
