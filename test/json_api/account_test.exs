@@ -41,6 +41,7 @@ defmodule JsonAPI.AccountTest do
       assert {:ok, %User{} = user} = Account.create_user(@valid_attrs)
       assert user.email == "some email"
       assert user.is_active == true
+      assert Bcrypt.verify_pass("some password", user.password_hash)
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -52,6 +53,7 @@ defmodule JsonAPI.AccountTest do
       assert {:ok, %User{} = user} = Account.update_user(user, @update_attrs)
       assert user.email == "some updated email"
       assert user.is_active == false
+      assert Bcrypt.verify_pass("some updated password", user.password_hash)
     end
 
     test "update_user/2 with invalid data returns error changeset" do
