@@ -7,6 +7,8 @@ defmodule JsonAPIWeb.Router do
 
   scope "/api", JsonAPIWeb do
     pipe_through :api
+
+    resources "/users", UserController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
